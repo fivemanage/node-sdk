@@ -1,1 +1,1 @@
-# @fmsdk/node
+# @fivemanage/sdk
