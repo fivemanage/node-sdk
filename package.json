@@ -1,12 +1,29 @@
 {
   "name": "@fivemanage/sdk",
-  "private": false,
-  "version": "0.0.2",
   "description": "Node.js utilities for Fivemanage",
-  "main": "./src/index.ts",
-  "module": "./src/index.ts",
-  "files": ["dist", "README.md", "package.json"],
+  "version": "0.0.2",
+  "author": "Fivemanage",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fivemanage/node-sdk"
+  },
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "sideEffects": false,
+  "files": ["dist", "README.md", "package.json"],
   "scripts": {
     "build": "pnpm rimraf dist && tsup",
     "dev": "pnpm run build && node dist/index.js",
@@ -34,7 +51,6 @@
   "packageManager": "pnpm@9.12.2",
   "dependencies": {
     "axios": "^1.7.7",
-    "dotenv": "^16.4.5",
-    "fs": "0.0.1-security"
+    "dotenv": "^16.4.5"
   }
 }

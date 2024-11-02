@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import * as dotenv from "dotenv";
 import { expect, test } from "vitest";
 import { FivemanageClient } from ".";
