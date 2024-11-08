@@ -23,8 +23,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       
-      - run: cat .env >> $GITHUB_ENV
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -52,6 +50,8 @@ jobs:
         run: pnpm run build
 
       - name: Performing Test
+        env:
+          TEST_MEDIA_TOKEN: ${{ secrets.TEST_MEDIA_TOKEN }}   
         run: pnpm run test
       
       - name: Release 🚀
