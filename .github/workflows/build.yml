@@ -22,9 +22,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-
-      - name: Load environment variables
-        run: cat .env >>${GITHUB_ENV}
+      
+      - run: cat .env >> $GITHUB_ENV
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
