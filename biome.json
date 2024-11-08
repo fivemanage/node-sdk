@@ -8,11 +8,25 @@
     "lineWidth": 80,
     "lineEnding": "lf",
     "attributePosition": "auto",
-    "ignore": [".changeset", ".husky", "node_modules", "build", "dist"]
+    "ignore": [
+      ".changeset",
+      ".husky",
+      "coverage",
+      "node_modules",
+      "build",
+      "dist"
+    ]
   },
   "organizeImports": {
     "enabled": true,
-    "ignore": [".changeset", ".husky", "node_modules", "build", "dist"]
+    "ignore": [
+      ".changeset",
+      ".husky",
+      "coverage",
+      "node_modules",
+      "build",
+      "dist"
+    ]
   },
   "linter": {
     "enabled": true,
@@ -42,7 +56,14 @@
         "recommended": true
       }
     },
-    "ignore": [".changeset", ".husky", "node_modules", "build", "dist"]
+    "ignore": [
+      ".changeset",
+      ".husky",
+      "coverage",
+      "node_modules",
+      "build",
+      "dist"
+    ]
   },
   "javascript": {
     "formatter": {
