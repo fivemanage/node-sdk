@@ -1,7 +1,7 @@
 {
   "name": "@fivemanage/sdk",
   "description": "Node.js utilities for Fivemanage",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "author": "Fivemanage",
   "repository": {
     "type": "git",
