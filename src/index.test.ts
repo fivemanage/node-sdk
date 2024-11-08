@@ -13,26 +13,17 @@ test("throws error when API key is not provided", () => {
   );
 });
 
-test("make sure presigned url is fetching for image", async () => {
-  const presignedUrl = await client.getPresignedUrl("image");
-  expect(presignedUrl).toMatch(
-    /^https:\/\/api\.fivemanage\.com\/api\/presigned-url\/\w+$/
-  );
-});
+for (const type of ["audio", "video", "image"]) {
+  test(`make sure presigned url is fetching for ${type}`, async () => {
+    const presignedUrl = await client.getPresignedUrl(
+      type as "audio" | "video" | "image"
+    );
 
-test("make sure presigned url is fetching for audio", async () => {
-  const presignedUrl = await client.getPresignedUrl("audio");
-  expect(presignedUrl).toMatch(
-    /^https:\/\/api\.fivemanage\.com\/api\/presigned-url\/\w+$/
-  );
-});
-
-test("make sure presigned url is fetching for video", async () => {
-  const presignedUrl = await client.getPresignedUrl("video");
-  expect(presignedUrl).toMatch(
-    /^https:\/\/api\.fivemanage\.com\/api\/presigned-url\/\w+$/
-  );
-});
+    expect(presignedUrl).toMatch(
+      /^https:\/\/api\.fivemanage\.com\/api\/presigned-url\/\w+$/
+    );
+  });
+}
 
 test("logs an info message successfully", async () => {
   const logResponse = await client.log("info", "Test log message", {
@@ -59,19 +50,19 @@ test("upload and delete an image file", async () => {
  * Temp disabled due to the upload response not passing an id
  */
 
-// test("upload and delete an audio file", async () => {
-//   const file = new Blob([fs.readFileSync("test/audio.mp3")], {
-//     type: "audio/mpeg",
-//   });
-//   const uploadResponse = await client.uploadFile("audio", file, {
-//     name: "My audio",
-//     description: "This is a recording of something cool",
-//   });
-//   expect(uploadResponse).toHaveProperty("url");
+test("upload and delete an audio file", async () => {
+  const file = new Blob([fs.readFileSync("test/audio.mp3")], {
+    type: "audio/mpeg",
+  });
+  const uploadResponse = await client.uploadFile("audio", file, {
+    name: "My audio",
+    description: "This is a recording of something cool",
+  });
+  expect(uploadResponse).toHaveProperty("url");
 
-//   const deleteResponse = await client.deleteFile("audio", uploadResponse.id);
-//   expect(deleteResponse).toHaveProperty("status", "ok");
-// });
+  const deleteResponse = await client.deleteFile("audio", uploadResponse.id);
+  expect(deleteResponse).toHaveProperty("status", "ok");
+});
 
 test("upload and delete a video file", async () => {
   const file = new Blob([fs.readFileSync("test/video.mp4")], {
