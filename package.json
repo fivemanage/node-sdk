@@ -33,7 +33,6 @@
     "check": "biome check --write .",
     "typecheck": "tsc --noEmit",
     "prepare": "husky",
-    "pub:latest": "changeset publish",
     "build:prepare": "pnpm run typecheck && pnpm run lint && pnpm run format && pnpm run check && pnpm run build",
     "dev:prepare": "git pull origin main && pnpm i"
   },
